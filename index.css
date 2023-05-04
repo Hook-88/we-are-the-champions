@@ -3,9 +3,81 @@ html, body {
     padding: 0;
     background-color: #1B1924;
     text-align: center;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+
+h1, h2 {
+    color: #FFFFFF;
+    margin: 0;
 }
 
 h1 {
-    color: #FFFFFF;
-    ;
+    font-size: 25px;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.app-container {
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 320px;
+    margin: 0 auto;
+    flex-grow: 1;
+}
+
+.app-logo {
+    width: 90px;
+    display: block;
+    margin: 50px auto 0 auto;
+}
+
+textarea {
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    width: 100%;
+    max-width: 320px;
+    height: 120px;
+    background: #444059;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 19px;
+}
+
+.publish-btn {
+    font-family: inherit;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 60px;
+    border-radius: 8px;
+    color: #04131C;
+    border: none;
+    background-color: #28A9F1;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+ul li {
+    font-family: 'Inter', sans-serif;;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 400;
+    color: #1B1924;
+    background-color: #FFFFFF;
+    padding: 12px 15px;
 }
