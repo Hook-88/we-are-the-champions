@@ -1,4 +1,11 @@
 html, body {
     margin: 0;
     padding: 0;
+    background-color: #1B1924;
+    text-align: center;
+}
+
+h1 {
+    color: #FFFFFF;
+    ;
 }
