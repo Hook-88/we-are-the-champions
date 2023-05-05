@@ -9,6 +9,7 @@ const app = initializeApp(appSettings)
 const database = getDatabase(app)
 const endorsementsInDB = ref(database, "endorsements")
 
+
 const publishBtn = document.getElementById('publish-btn')
 const endorsementInputField = document.getElementById('endorsement-input-field')
 const fromInputField = document.getElementById('from-input-field')
@@ -16,12 +17,8 @@ const toInputField = document.getElementById('to-input-field')
 const listOfEndorsements = document.getElementById('list-of-endorsements')
 
 endorsementInputField.addEventListener('input', activatePublishBtn)
-
 fromInputField.addEventListener('input', activatePublishBtn)
-
 toInputField.addEventListener('input', activatePublishBtn)
-
-
 
 function activatePublishBtn() {
   //checks if there's an input by user
@@ -33,7 +30,6 @@ function activatePublishBtn() {
       publishBtn.disabled = true
   }   
 }
-
 
 publishBtn.addEventListener('click', publishEndorsement)
 
@@ -62,38 +58,35 @@ function clearInputfield(inputField) {
   inputField.value = ""
 }
 
+//when the databse change
 onValue(endorsementsInDB, function(snapshot) {
   const endorsementsArray = Object.entries(snapshot.val())
 
   clearEndorsementList()
 
-  endorsementsArray.forEach(function (endorsement) {
-    const newListItem = document.createElement('li')
-    newListItem.classList.add('card')
-    
-    const listItemInnerHTML = `
-
-        <div class="card-header">
-          To <span>${endorsement[1].reciverName}</span>
-        </div>
-        ${endorsement[1].message} 
-        <div class="card-footer">
-          From&nbsp;<span>${endorsement[1].senderName}</span>
-          <div class="likes-container">
-            <span class="like-icon-btn" id="${endorsement[0]}">&hearts;</span> ${endorsement[1].numOfLikes}
-          </div>
-        </div>
-
-    `
-    newListItem.innerHTML = listItemInnerHTML
-
-    listOfEndorsements.append(newListItem)
-
-
+  endorsementsArray.forEach(function (endorsement) {  
+    listOfEndorsements.innerHTML += createEndorsementCard(endorsement)
   })
 })
 
 function clearEndorsementList() {
   listOfEndorsements.innerHTML = ""
+}
+
+function createEndorsementCard(endorsement) {
+  return `
+  <li class="card">
+    <div class="card-header">
+      To <span>${endorsement[1].reciverName}</span>
+    </div>
+    ${endorsement[1].message} 
+    <div class="card-footer">
+      From&nbsp;<span>${endorsement[1].senderName}</span>
+      <div class="likes-container">
+        <span class="like-icon-btn" id="${endorsement[0]}">&hearts;</span> ${endorsement[1].numOfLikes}
+      </div>
+    </div>
+  </li>
+  `
 }
 
