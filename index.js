@@ -34,7 +34,6 @@ function renderEndorsement(endorsementMessage) {
 
 onValue(endorsementsInDB, function(snapshot) {
   const endorsementsArray = Object.entries(snapshot.val())
-  listOfEndorsements.innerHTML = ""
 
   endorsementsArray.forEach(function (endorsement) {
     // endorsement[1] = the value
@@ -43,4 +42,8 @@ onValue(endorsementsInDB, function(snapshot) {
   
   
 })
+
+function clearEndorsementList() {
+  listOfEndorsements.innerHTML = ""
+}
 

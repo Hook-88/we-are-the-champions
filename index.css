@@ -27,7 +27,7 @@ h2 {
 .app-container {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 18px;
     max-width: 320px;
     margin: 0 auto;
     flex-grow: 1;
@@ -35,9 +35,9 @@ h2 {
 
 .input-container {
     display: flex;
-    gap: 10px;
+    /* gap: 10px; */
     flex-grow: 1;
-    /* justify-content: space-between; */
+    justify-content: space-between;
 }
 /* images */
 .app-logo {
@@ -45,7 +45,7 @@ h2 {
     display: block;
     margin: 50px auto 0 auto;
 }
-/* inpyts */
+/* inputs */
 
 textarea {
     box-sizing: border-box;
@@ -107,4 +107,26 @@ ul li {
     color: #1B1924;
     background-color: #FFFFFF;
     padding: 12px 15px;
+}
+
+/* cards */
+.card {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.card-header, .card-footer {
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.card-footer {
+    display: flex;
+    align-items: center;
+}
+
+.likes-container {
+    margin-left: auto;
 }
