@@ -88,6 +88,15 @@ input[type="text"] {
     cursor: pointer;
 }
 
+.disabled-btn {
+    background-color: #7ec2e6;
+    color: #3f4a50;
+}
+
+.disabled-btn:hover {
+    cursor: not-allowed;
+}
+
 /* lists */
 
 ul {
