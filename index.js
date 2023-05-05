@@ -20,7 +20,6 @@ function publishEndorsement() {
   clearEndorsementInputfield()
   //push to data base the value of userEdorsement
   push(endorsementsInDB, userEndorsement)
-  renderEndorsement(userEndorsement)
 }
 
 function clearEndorsementInputfield() {
@@ -32,4 +31,16 @@ function renderEndorsement(endorsementMessage) {
   newListItem.textContent = endorsementMessage
   listOfEndorsements.append(newListItem)
 }
+
+onValue(endorsementsInDB, function(snapshot) {
+  const endorsementsArray = Object.entries(snapshot.val())
+  listOfEndorsements.innerHTML = ""
+
+  endorsementsArray.forEach(function (endorsement) {
+    // endorsement[1] = the value
+    renderEndorsement(endorsement[1])
+  })
+  
+  
+})
 
