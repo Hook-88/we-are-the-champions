@@ -26,12 +26,18 @@ h2 {
 
 .app-container {
     display: flex;
-    align-items: stretch;
     flex-direction: column;
     gap: 15px;
     max-width: 320px;
     margin: 0 auto;
     flex-grow: 1;
+}
+
+.input-container {
+    display: flex;
+    gap: 10px;
+    flex-grow: 1;
+    /* justify-content: space-between; */
 }
 /* images */
 .app-logo {
@@ -55,6 +61,16 @@ textarea {
     padding: 12px 19px;
 }
 
+input[type="text"] {
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    background: #444059;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 0;
+    color: #FFFFFF;
+
+}
 /* buttons */
 
 .publish-btn {
