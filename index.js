@@ -19,7 +19,7 @@ endorsementInputField.addEventListener('input', activatePublishBtn)
 
 fromInputField.addEventListener('input', activatePublishBtn)
 
-toInputField,addEventListener('input', activatePublishBtn)
+toInputField.addEventListener('input', activatePublishBtn)
 
 
 
@@ -40,20 +40,26 @@ publishBtn.addEventListener('click', publishEndorsement)
 function publishEndorsement() { 
   //INSERT CODE HERE
   const endorsement =  {
-    senderName: fromInputField.value,
-    reciverName: toInputField.value,
+    senderName: captilizeString(fromInputField.value) ,
+    reciverName: captilizeString(toInputField.value),
     message: endorsementInputField.value,
     numOfLikes: 0
   }
-  
-  
-  clearEndorsementInputfield()
+
+  clearInputfield(endorsementInputField)
+  clearInputfield(fromInputField)
+  clearInputfield(toInputField)
+
   //push to data base the value of userEdorsement
   push(endorsementsInDB, endorsement)
 }
 
-function clearEndorsementInputfield() {
-  endorsementInputField.value = ""
+function captilizeString(string) {
+  return string.charAt(0).toUpperCase() + string.substring(1)
+}
+
+function clearInputfield(inputField) {
+  inputField.value = ""
 }
 
 onValue(endorsementsInDB, function(snapshot) {
