@@ -67,7 +67,7 @@ onValue(endorsementsInDB, function(snapshot) {
         <div class="card-footer">
           From&nbsp;<span>${endorsement[1].senderName}</span>
           <div class="likes-container">
-            <span id="like-icon-btn">&hearts;</span> <span id="total-likes">${endorsement[1].numOfLikes}</span>
+            <span id="like-icon-btn" class="like-icon-btn">&hearts;</span> <span id="total-likes">${endorsement[1].numOfLikes}</span>
           </div>
         </div>
       </li>
