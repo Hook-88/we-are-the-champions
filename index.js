@@ -15,12 +15,17 @@ const fromInputField = document.getElementById('from-input-field')
 const toInputField = document.getElementById('to-input-field')
 const listOfEndorsements = document.getElementById('list-of-endorsements')
 
-
 endorsementInputField.addEventListener('input', activatePublishBtn)
+
+fromInputField.addEventListener('input', activatePublishBtn)
+
+toInputField,addEventListener('input', activatePublishBtn)
+
+
 
 function activatePublishBtn() {
   //checks if there's an input by user
-  if (endorsementInputField.value) {
+  if (fromInputField.value && toInputField.value && endorsementInputField.value) {
       publishBtn.disabled = false
       publishBtn.classList.remove('disabled-btn')
   } else {
@@ -57,9 +62,11 @@ onValue(endorsementsInDB, function(snapshot) {
   clearEndorsementList()
 
   endorsementsArray.forEach(function (endorsement) {
-    // endorsement[1] = the value
-    const htmlListItem = `
-      <li class="card">
+    const newListItem = document.createElement('li')
+    newListItem.classList.add('card')
+    
+    const listItemInnerHTML = `
+
         <div class="card-header">
           To <span>${endorsement[1].reciverName}</span>
         </div>
@@ -67,12 +74,16 @@ onValue(endorsementsInDB, function(snapshot) {
         <div class="card-footer">
           From&nbsp;<span>${endorsement[1].senderName}</span>
           <div class="likes-container">
-            <span id="like-icon-btn" class="like-icon-btn">&hearts;</span> <span id="total-likes">${endorsement[1].numOfLikes}</span>
+            <span class="like-icon-btn" id="${endorsement[0]}">&hearts;</span> ${endorsement[1].numOfLikes}
           </div>
         </div>
-      </li>
+
     `
-    listOfEndorsements.innerHTML += htmlListItem
+    newListItem.innerHTML = listItemInnerHTML
+
+    listOfEndorsements.append(newListItem)
+
+
   })
 })
 

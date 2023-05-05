@@ -97,10 +97,10 @@ input[type="text"] {
     cursor: not-allowed;
 }
 
-.like-icon-btn:hover {
+/* .like-icon-btn:hover {
     cursor: pointer;
     color: darkred;
-}
+} */
 
 /* lists */
 
