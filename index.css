@@ -6,7 +6,7 @@ html, body {
     font-family: 'Josefin Sans', sans-serif;
 }
 
-
+/* Typo */
 h1, h2 {
     color: #FFFFFF;
     margin: 0;
@@ -22,6 +22,7 @@ h2 {
     margin-top: 10px;
     margin-bottom: 5px;
 }
+/* containers */
 
 .app-container {
     display: flex;
@@ -32,17 +33,19 @@ h2 {
     margin: 0 auto;
     flex-grow: 1;
 }
-
+/* images */
 .app-logo {
     width: 90px;
     display: block;
     margin: 50px auto 0 auto;
 }
+/* inpyts */
 
 textarea {
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
     font-size: 15px;
+    color: #FFFFFF;
     width: 100%;
     max-width: 320px;
     height: 120px;
@@ -51,6 +54,8 @@ textarea {
     border-radius: 8px;
     padding: 12px 19px;
 }
+
+/* buttons */
 
 .publish-btn {
     font-family: inherit;
@@ -62,6 +67,12 @@ textarea {
     border: none;
     background-color: #28A9F1;
 }
+
+.publish-btn:hover {
+    cursor: pointer;
+}
+
+/* lists */
 
 ul {
     margin: 0;
