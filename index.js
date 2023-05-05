@@ -11,6 +11,8 @@ const endorsementsInDB = ref(database, "endorsements")
 
 const publishBtn = document.getElementById('publish-btn')
 const endorsementInputField = document.getElementById('endorsement-input-field')
+const fromInputField = document.getElementById('from-input-field')
+const toInputField = document.getElementById('to-input-field')
 const listOfEndorsements = document.getElementById('list-of-endorsements')
 
 
@@ -24,40 +26,54 @@ function activatePublishBtn() {
   } else {
       publishBtn.classList.add('disabled-btn')
       publishBtn.disabled = true
-  } 
-  
+  }   
 }
+
 
 publishBtn.addEventListener('click', publishEndorsement)
 
 function publishEndorsement() { 
-  const userEndorsement = endorsementInputField.value
+  //INSERT CODE HERE
+  const endorsement =  {
+    senderName: fromInputField.value,
+    reciverName: toInputField.value,
+    message: endorsementInputField.value,
+    numOfLikes: 0
+  }
+  
+  
   clearEndorsementInputfield()
   //push to data base the value of userEdorsement
-  push(endorsementsInDB, userEndorsement)
+  push(endorsementsInDB, endorsement)
 }
 
 function clearEndorsementInputfield() {
   endorsementInputField.value = ""
 }
 
-function renderEndorsement(endorsementMessage) {
-  const newListItem = document.createElement('li')
-  newListItem.textContent = endorsementMessage
-  listOfEndorsements.append(newListItem)
-}
-
 onValue(endorsementsInDB, function(snapshot) {
   const endorsementsArray = Object.entries(snapshot.val())
 
-  clearEndorsementInputfield()
+  clearEndorsementList()
 
   endorsementsArray.forEach(function (endorsement) {
     // endorsement[1] = the value
-    renderEndorsement(endorsement[1])
+    const htmlListItem = `
+      <li class="card">
+        <div class="card-header">
+          To <span>${endorsement[1].reciverName}</span>
+        </div>
+        ${endorsement[1].message} 
+        <div class="card-footer">
+          From&nbsp;<span>${endorsement[1].senderName}</span>
+          <div class="likes-container">
+            <span id="like-icon-btn">&hearts;</span> <span id="total-likes">${endorsement[1].numOfLikes}</span>
+          </div>
+        </div>
+      </li>
+    `
+    listOfEndorsements.innerHTML += htmlListItem
   })
-  
-  
 })
 
 function clearEndorsementList() {
