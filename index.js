@@ -13,6 +13,21 @@ const publishBtn = document.getElementById('publish-btn')
 const endorsementInputField = document.getElementById('endorsement-input-field')
 const listOfEndorsements = document.getElementById('list-of-endorsements')
 
+
+endorsementInputField.addEventListener('input', activatePublishBtn)
+
+function activatePublishBtn() {
+  //checks if there's an input by user
+  if (endorsementInputField.value) {
+      publishBtn.disabled = false
+      publishBtn.classList.remove('disabled-btn')
+  } else {
+      publishBtn.classList.add('disabled-btn')
+      publishBtn.disabled = true
+  } 
+  
+}
+
 publishBtn.addEventListener('click', publishEndorsement)
 
 function publishEndorsement() { 
@@ -34,6 +49,8 @@ function renderEndorsement(endorsementMessage) {
 
 onValue(endorsementsInDB, function(snapshot) {
   const endorsementsArray = Object.entries(snapshot.val())
+
+  clearEndorsementInputfield()
 
   endorsementsArray.forEach(function (endorsement) {
     // endorsement[1] = the value
